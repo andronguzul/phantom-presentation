@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom - Detective Story | Publisher Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 107, 107, 0.1), transparent 50%),
+                radial-gradient(circle at 80% 60%, rgba(78, 205, 196, 0.1), transparent 50%);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .title-slide {
+            background: linear-gradient(135deg, rgba(30, 30, 60, 0.9), rgba(20, 20, 40, 0.9));
+        }
+
+        .title-slide h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .title-slide .subtitle {
+            font-size: 1.5rem;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #4ecdc4;
+            text-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        p,
+        li {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card {
+            text-align: left;
+        }
+
+        .feature-card h4 {
+            color: #4ecdc4;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #b0b0b0;
+            margin-top: 5px;
+        }
+
+        .demographics {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .demo-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .locations {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .location-item {
+            padding: 15px;
+            background: rgba(69, 183, 209, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(69, 183, 209, 0.3);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(78, 205, 196, 0.2));
+            padding: 60px;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .accent {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 20px;
+            }
+
+            .title-slide h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="presentation-container">
+        <!-- Title Slide -->
+        <div class="slide title-slide">
+            <h1>PHANTOM</h1>
+            <p class="subtitle">Detective Story</p>
+            <p style="font-size: 1.3rem; margin-top: 30px;">Mobile Visual Novel with Cinematic Crime Investigation</p>
+        </div>
+
+        <!-- About Us -->
+        <div class="slide">
+            <h2>About Us</h2>
+            <div class="card" style="max-width: 800px;">
+                <p style="font-size: 1.4rem; text-align: center; margin-bottom: 30px;">
+                    We are passionate game developers creating immersive storytelling experiences that combine 
+                    <span class="highlight">cutting-edge gameplay mechanics</span> with 
+                    <span class="accent">compelling narratives</span>.
+                </p>
+                <p style="text-align: center;">
+                    Our focus is on delivering premium mobile gaming experiences that engage players 
+                    through innovative detective mechanics and atmospheric storytelling.
+                </p>
+            </div>
+        </div>
+
+        <!-- Product Overview -->
+        <div class="slide">
+            <h2>Core Concept</h2>
+            <div class="grid">
+                <div class="card feature-card">
+                    <h4>Interactive Chat System</h4>
+                    <p>Players engage with NPCs through dynamic conversations with meaningful choices that shape the
+                        story outcome.</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Cinematic Storytelling</h4>
+                    <p>Strong focus on atmospheric narrative with professional voiceover and immersive noir city
+                        environment.</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="image-container">
+                    <img src="assets/66F7538F-3991-4E0D-84CC-07432EE0B30A.jpeg"
+                        alt="Game Room Interface" />
+                </div>
+                <div class="image-container">
+                    <img src="assets/7A292DDC-D8C8-45EA-8A1A-5342645D2566.jpeg"
+                        alt="Chat Interface" />
+                </div>
+                <div class="image-container">
+                    <img src="assets/FABB8E82-49BF-46CB-B9C4-B9467CE9774A.jpeg"
+                        alt="Radio Interface" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Rich Story -->
+        <div class="slide">
+            <h2>Rich Cinematic Story</h2>
+            <div class="grid">
+                <div class="card feature-card">
+                    <h4>Intriguing beginning</h4>
+                    <p>6 bodies found at the docks. No IDs. Different nationalities. Each shot in the head. No witnesses. No leads. Who are they — and what connects them?</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Story expansion</h4>
+                    <p>What starts as a local murder case spirals into a city-wide nightmare. Phantom escalates, spreading fear and chaos until the entire city is under panic.</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="image-container">
+                    <img src="assets/25F9B980-97B6-44F0-BEF2-F1BB7156DE3D.jpeg"
+                        alt="Beginning Case" />
+                </div>
+                <div class="image-container">
+                    <img src="assets/15373BBB-32FA-465F-9E72-BB7179E531DF.jpeg"
+                        alt="Story Expansion" />
+                </div>
+            </div>
+        </div>
+
+         <!-- Atmospheric Features -->
+         <div class="slide">
+            <h2>Atmospheric Features</h2>
+            <div class="grid">
+                <div class="card feature-card">
+                    <h4>Immersive Audio</h4>
+                    <p>Noir soundtrack and character voiceover create cinematic atmosphere</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Radio</h4>
+                    <p>Blends mundane city news with hidden story clues and foreshadowing</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Character thoughts</h4>
+                    <p>Inner monologue that guides players through the game</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Noir City Atmosphere</h4>
+                    <p>Rich visuals that dive into the criminal world</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detective Mechanics -->
+        <div class="slide">
+            <h2>Detective Mechanics</h2>
+            <div class="card" style="margin-bottom: 30px;">
+                <h3>Enigma - Core Storyline Mechanics</h3>
+                <p>Players decrypt notes left by the serial killer "Phantom" using authentic Enigma machine mechanics.
+                    Essential for story progression.</p>
+            </div>
+
+            <div>
+                <div class="image-container">
+                    <img src="assets/6E676F07-DDBB-45DE-9F4A-583A35C4EB20.jpeg"
+                        alt="Detective Mechanics Overview" />
+                </div>
+                <div class="image-container">
+                    <img src="assets/B2BBE56D-33FB-421A-9AC0-3CCFD78780D4.jpeg"
+                        alt="Enigma Envelope" />
+                </div>
+                <div class="image-container">
+                    <img src="assets/EE113144-57B2-4793-AD6B-D94C152575DA.jpeg"
+                        alt="Enigma Reflector" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Cipher Mechanics -->
+        <div class="slide">
+            <h2>Advanced Cipher System</h2>
+            <div class="grid">
+                <div class="card feature-card">
+                    <h4>Multiple Cipher Types</h4>
+                    <p><span class="highlight">Caesar, Morse, Vigenère, Playfair, Route</span> - Each with unique
+                        solving mechanics</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Educational Value</h4>
+                    <p>Players learn real cryptography techniques while advancing the story</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="image-container">
+                    <img src="assets/A69D0E88-9C61-4CEB-A9AE-3DCB27147002.jpeg"
+                        alt="Additional Mechanics Modules" />
+                </div>
+                <div class="image-container">
+                    <img src="F2964686-FE0A-4883-AC73-F09A59EEEC2B.jpeg"
+                        alt="Route Module Configuration" />
+                </div>
+                <div class="image-container">
+                    <img src="assets/0E1A6866-CC63-438D-AE05-35CE14342E16.jpeg"
+                        alt="Computer Results" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Model -->
+        <div class="slide">
+            <h2>Monetization Strategy</h2>
+            <div class="grid">
+                <div class="card feature-card">
+                    <h4>Premium Content</h4>
+                    <p>Episodes 2-10 available through gem purchases</p>
+                    <p><strong>Episodes 2-4:</strong> 500 gems each</p>
+                    <p><strong>Episodes 5-10:</strong> 1000 gems each</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Gameplay Enhancements</h4>
+                    <p>Optional features to improve user experience</p>
+                    <p><strong>Mechanics Help:</strong> 100 gems</p>
+                    <p><strong>Skip Radio:</strong> 50 gems</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Gem Packages</h4>
+                    <p>Multiple price points for different player segments</p>
+                    <p><strong>Tiny:</strong> 500 gems - $1</p>
+                    <p><strong>Small:</strong> 1000 gems - $2</p>
+                    <p><strong>Middle:</strong> 3000 gems - $5</p>
+                    <p><strong>Default:</strong> 8000 gems - $12</p>
+                    <p><strong>Large:</strong> 30000 gems - $30</p>
+                </div>
+                <div class="card feature-card">
+                    <h4>Free Options</h4>
+                    <p>Ad-supported and viral growth mechanics</p>
+                    <p><strong>Watch Ads:</strong> 50 gems each (max 3, then 5min cooldown)</p>
+                    <p><strong>Social Media:</strong> 500 gems for Instagram follow</p>
+                    <p><strong>Referrals:</strong> 500 gems for both parties</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Target Audience -->
+        <div class="slide">
+            <h2>Target Audience</h2>
+            <div class="demographics">
+                <div class="demo-item">
+                    <h3 style="color: #ff6b6b;">Gender</h3>
+                    <p style="font-size: 1.4rem; font-weight: bold;">Mostly Women</p>
+                    <p>Strong female engagement with narrative-driven content</p>
+                </div>
+                <div class="demo-item">
+                    <h3 style="color: #4ecdc4;">Age Range</h3>
+                    <p style="font-size: 1.4rem; font-weight: bold;">18-25 Years</p>
+                    <p>Young adults seeking engaging mobile entertainment</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px;">Top Markets</h3>
+            <div class="locations">
+                <div class="location-item">
+                    <strong style="font-size: 30px;">🇺🇸</strong>
+                    <strong style="font-size: 20px; margin-left: 10px;">United States</strong>
+                </div>
+                <div class="location-item">
+                    <strong style="font-size: 30px;">🇬🇧</strong>
+                    <strong style="font-size: 20px; margin-left: 10px;">United Kingdom</strong>
+                </div>
+                <div class="location-item">
+                    <strong style="font-size: 30px;">🇵🇭</strong>
+                    <strong style="font-size: 20px; margin-left: 10px;">Philippines</strong>
+                </div>
+                <div class="location-item">
+                    <strong style="font-size: 30px;">🇮🇩</strong>
+                    <strong style="font-size: 20px; margin-left: 10px;">Indonesia</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marketing Results -->
+        <div class="slide">
+            <h2>Latest Marketing Results</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">20%</span>
+                    <span class="stat-label">Conversion Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">9%</span>
+                    <span class="stat-label">IAP Conversion</span>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 40px;">
+                <h3 style="color: #4ecdc4;">Proven Market Performance</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                    Our metrics demonstrate <span class="highlight">strong player engagement</span> and
+                    <span class="accent">healthy monetization</span> with room for optimization and growth.
+                </p>
+                <p>
+                    These results validate our core gameplay mechanics and story-driven approach,
+                    showing clear market demand for premium detective gaming experiences.
+                </p>
+            </div>
+        </div>
+
+        <!-- Growth Ambition -->
+        <div class="slide">
+            <h2>Growth Ambition</h2>
+            <div class="cta-section">
+                <h3 style="font-size: 3.5rem; margin-bottom: 30px;">
+                    <span class="highlight">10 Million+</span> Installs
+                </h3>
+                <p style="font-size: 1.4rem; margin-bottom: 30px;">
+                    We're positioned to scale rapidly with the right publishing partnership
+                </p>
+
+                <div class="grid" style="margin-top: 40px;">
+                    <div class="card">
+                        <h4 style="color: #4ecdc4;">Market Opportunity</h4>
+                        <p>Growing demand for narrative-driven mobile games with unique mechanics</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #ff6b6b;">Competitive Advantage</h4>
+                        <p>First-of-its-kind authentic cryptography gameplay in mobile visual novels</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="color: #45b7d1;">Scalability</h4>
+                        <p>Proven content framework ready for rapid episode expansion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partnership Opportunity -->
+        <div class="slide">
+            <h2>Partnership Opportunity</h2>
+            <div class="card" style="max-width: 900px;">
+                <h3 style="color: #4ecdc4; margin-bottom: 30px;">Why Partner With Us?</h3>
+
+                <div class="grid">
+                    <div class="feature-card">
+                        <h4>✨ Unique IP</h4>
+                        <p>First authentic cryptography-based detective game on mobile</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📈 Proven Metrics</h4>
+                        <p>Strong conversion rates and healthy IAP performance</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎯 Clear Audience</h4>
+                        <p>Well-defined target demographic with growing market presence</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🚀 Growth Ready</h4>
+                        <p>Scalable content pipeline and established development workflow</p>
+                    </div>
+                </div>
+
+                <p style="font-size: 1.3rem; margin-top: 40px; text-align: center;">
+                    Let's bring <span class="highlight">Phantom - Detective Story</span> to millions of players
+                    worldwide
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for slide navigation
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slide');
+
+            // Add slide numbers for navigation reference
+            slides.forEach((slide, index) => {
+                const slideNumber = document.createElement('div');
+                slideNumber.style.position = 'absolute';
+                slideNumber.style.top = '20px';
+                slideNumber.style.right = '20px';
+                slideNumber.style.background = 'rgba(255, 255, 255, 0.1)';
+                slideNumber.style.padding = '10px 15px';
+                slideNumber.style.borderRadius = '20px';
+                slideNumber.style.fontSize = '0.9rem';
+                slideNumber.style.color = '#b0b0b0';
+                slideNumber.textContent = `${index + 1} / ${slides.length}`;
+                slide.appendChild(slideNumber);
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                    e.preventDefault();
+                    const currentSlide = Math.floor(window.scrollY / window.innerHeight);
+                    const nextSlide = Math.min(currentSlide + 1, slides.length - 1);
+                    slides[nextSlide].scrollIntoView({ behavior: 'smooth' });
+                } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                    e.preventDefault();
+                    const currentSlide = Math.floor(window.scrollY / window.innerHeight);
+                    const prevSlide = Math.max(currentSlide - 1, 0);
+                    slides[prevSlide].scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
